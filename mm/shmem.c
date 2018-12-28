@@ -124,12 +124,14 @@ struct shmem_options {
 #ifdef CONFIG_TMPFS
 static unsigned long shmem_default_max_blocks(void)
 {
-	return totalram_pages / 2;
+	return totalram_pages() / 2;
 }
 
 static unsigned long shmem_default_max_inodes(void)
 {
-	return min(totalram_pages - totalhigh_pages, totalram_pages / 2);
+	unsigned long nr_pages = totalram_pages();
+
+	return min(nr_pages - totalhigh_pages(), nr_pages / 2);
 }
 #endif
 
