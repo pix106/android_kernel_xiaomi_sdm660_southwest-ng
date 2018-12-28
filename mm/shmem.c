@@ -3419,7 +3419,7 @@ static int shmem_parse_one(struct fs_context *fc, struct fs_parameter *param)
 		size = memparse(param->string, &rest);
 		if (*rest == '%') {
 			size <<= PAGE_SHIFT;
-			size *= totalram_pages;
+			size *= totalram_pages();
 			do_div(size, 100);
 			rest++;
 		}
