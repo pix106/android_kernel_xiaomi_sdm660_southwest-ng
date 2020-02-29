@@ -140,7 +140,7 @@
 	qcom,sync-dly-us = <800>;
 	qcom,fs-curr-ua = <20000>;
 	qcom,cons-sync-write-delay-us = <1000>;
-	qcom,led-strings-list = [00 01];
+        qcom,string-cfg = <6>;
 	qcom,en-cabc;
 	qcom,loop-auto-gm-en;
 	qcom,pmic-revid = <&pm660l_revid>;
