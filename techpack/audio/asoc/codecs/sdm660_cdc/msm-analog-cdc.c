@@ -3363,6 +3363,7 @@ static int msm_anlg_cdc_codec_enable_lo_pa(struct snd_soc_dapm_widget *w,
 				       DIG_CDC_EVENT_RX3_MUTE_OFF);
 		break;
 	case SND_SOC_DAPM_POST_PMD:
+		usleep_range(4000, 4100);
 		msm_anlg_cdc_dig_notifier_call(component,
 				       DIG_CDC_EVENT_RX3_MUTE_ON);
 		break;
