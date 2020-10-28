@@ -119,7 +119,7 @@
 };
 
 &pm660l_wled {
-	/delete-property/ qcom,auto-calibration-enable;
+        /delete-property/ qcom,auto-calibration;
 	compatible = "qcom,qpnp-wled";
 	reg = <0xd800 0x100>,
 		<0xd900 0x100>;
@@ -139,7 +139,7 @@
 	qcom,dim-mode = "hybrid";
 	qcom,hyb-thres = <625>;
 	qcom,sync-dly-us = <800>;
-	qcom,fs-curr-ua = <20000>;
+        qcom,fs-current-limit = <20000>;
 	qcom,cons-sync-write-delay-us = <1000>;
         qcom,string-cfg = <6>;
 	qcom,en-cabc;
