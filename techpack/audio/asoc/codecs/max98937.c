@@ -25,6 +25,7 @@
 #include <asm/segment.h>
 #include <linux/miscdevice.h>
 #include "max98937.h"
+#include <linux/miscdevice.h>
 
 /* #define snd_soc_kcontrol_component snd_kcontrol_chip */
 /* #define snd_soc_dapm_to_component(w->dapm)  w->component */
