@@ -35,6 +35,7 @@
 	qcom,disable-dma;
 	synaptics_tcm@20 {
 		compatible = "synaptics,tcm-i2c";
+		com,i2c-touch-active = "synaptics,tcm-i2c";
 		reg = <0x20>;
 		//interrupt-parent = <&msm_gpio>;
 		interrupt-parent = <&tlmm>;
