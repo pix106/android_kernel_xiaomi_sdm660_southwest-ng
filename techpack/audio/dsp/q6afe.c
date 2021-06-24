@@ -5378,7 +5378,6 @@ static int q6afe_send_enc_config(u16 port_id,
 		}
 	}
 
-#ifndef CONFIG_ARCH_SDM660
 	if (format == ASM_MEDIA_FMT_APTX) {
 		pr_debug("%s: sending AFE_PARAM_ID_APTX_SYNC_MODE to DSP",
 			__func__);
