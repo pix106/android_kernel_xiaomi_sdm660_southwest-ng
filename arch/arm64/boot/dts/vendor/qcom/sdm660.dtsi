@@ -31,7 +31,7 @@
 
 	chosen {
 		stdout-path = "serial0";
-		bootargs = "rcupdate.rcu_expedited=1 noirqdebug nodebugmon";
+		bootargs = "rcupdate.rcu_expedited=1 noirqdebug nodebugmon pstore.compress=none";
 	};
 
 	psci {
