@@ -119,6 +119,7 @@
 };
 
 &pm660l_wled {
+	/delete-property/ qcom,auto-calibration-enable;
 	compatible = "qcom,qpnp-wled";
 	reg = <0xd800 0x100>,
 		<0xd900 0x100>;
