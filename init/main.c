@@ -555,7 +555,7 @@ static void __init mm_init(void)
 	pti_init();
 }
 
-#if defined(CONFIG_MACH_LONGCHEER) || defined(CONFIG_MACH_XIAOMI_CLOVER)
+#if defined(CONFIG_MACH_LONGCHEER) || defined(CONFIG_MACH_XIAOMI_CLOVER) || defined(CONFIG_MACH_XIAOMI_PLATINA)
 int fpsensor = 1;
 bool is_poweroff_charge = false;
 #endif
@@ -563,7 +563,7 @@ asmlinkage __visible void __init start_kernel(void)
 {
 	char *command_line;
 	char *after_dashes;
-#ifdef CONFIG_MACH_LONGCHEER
+#if defined(CONFIG_MACH_LONGCHEER) || defined(CONFIG_MACH_XIAOMI_PLATINA)
 	char *p = NULL;
 #endif
 
@@ -598,7 +598,7 @@ asmlinkage __visible void __init start_kernel(void)
 	/* parameters may set static keys */
 	jump_label_init();
 
-#ifdef CONFIG_MACH_LONGCHEER
+#if defined(CONFIG_MACH_LONGCHEER) || defined(CONFIG_MACH_XIAOMI_PLATINA)
 	p = NULL;
 	p = strstr(boot_command_line, "androidboot.fpsensor=fpc");
 	if (p)
