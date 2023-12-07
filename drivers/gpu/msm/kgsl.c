@@ -5592,7 +5592,7 @@ static int __init kgsl_core_init(void)
 	INIT_LIST_HEAD(&kgsl_driver.pagetable_list);
 
 	kgsl_driver.workqueue = alloc_workqueue("kgsl-workqueue",
-		WQ_HIGHPRI | WQ_UNBOUND | WQ_MEM_RECLAIM | WQ_SYSFS, 0);
+		WQ_HIGHPRI | WQ_MEM_RECLAIM | WQ_SYSFS, 0);
 
 	if (!kgsl_driver.workqueue) {
 		pr_err("kgsl: Failed to allocate kgsl workqueue\n");
@@ -5601,7 +5601,7 @@ static int __init kgsl_core_init(void)
 	}
 
 	kgsl_driver.mem_workqueue = alloc_workqueue("kgsl-mementry",
-		WQ_HIGHPRI | WQ_UNBOUND | WQ_MEM_RECLAIM, 0);
+		WQ_HIGHPRI | WQ_MEM_RECLAIM, 0);
 
 	if (!kgsl_driver.mem_workqueue) {
 		pr_err("kgsl: Failed to allocate mem workqueue\n");
