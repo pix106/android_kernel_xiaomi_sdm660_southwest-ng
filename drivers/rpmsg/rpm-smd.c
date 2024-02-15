@@ -28,6 +28,7 @@
 #include <linux/of.h>
 #include <linux/of_irq.h>
 #include <linux/of_platform.h>
+#include <linux/suspend.h>
 #include <linux/rbtree.h>
 #include <linux/suspend.h>
 #include <soc/qcom/rpm-notifier.h>
