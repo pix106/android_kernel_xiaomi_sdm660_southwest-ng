@@ -3883,7 +3883,7 @@ static int fg_psy_get_property(struct power_supply *psy,
 		break;
 	case POWER_SUPPLY_PROP_CHARGE_FULL_DESIGN:
 #ifdef CONFIG_MACH_XIAOMI_CLOVER
-		pval->intval = fg->bp.batt_capacity_mah;
+		pval->intval = fg->bp.batt_capacity_mah * 1000;
 #else
 		pval->intval = chip->cl.nom_cap_uah;
 #endif
