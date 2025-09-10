@@ -712,19 +712,19 @@
 
 				qcom,cpr-corner-fmax-map =
 					/* Speed bin 0 */
-					<2 3 4 5 8>,
+					<1 3 4 5 8>,
 
 					/* Speed bin 1 */
-					<2 3 4 5 8>,
+					<1 3 4 5 8>,
 
 					/* Speed bin 2 */
 					<0 0 0 0 0>,
 
 					/* Speed bin 3 */
-					<2 3 4 5 8>,
+					<1 3 4 5 8>,
 
 					/* Speed bin 4 */
-					<2 3 4 5 8>;
+					<1 3 4 5 8>;
 
 				qcom,cpr-voltage-ceiling =
 					< 724000  724000  724000  788000  868000
@@ -863,19 +863,19 @@
 
 				qcom,cpr-corner-fmax-map =
 					/* Speed-bin 0 */
-					<2 3 4 6 7>,
+					<1 3 4 6 7>,
 
 					/* Speed-bin 1 */
-					<2 3 4 6 7>,
+					<1 3 4 6 7>,
 
 					/* Speed-bin 2 */
 					<0 0 0 0 0>,
 
 					/* Speed-bin 3 */
-					<2 3 4 6 7>,
+					<1 3 4 6 7>,
 
 					/* Speed-bin 4 */
-					<2 3 4 6 7>;
+					<1 3 4 6 7>;
 
 				qcom,cpr-voltage-ceiling =
 					<724000  724000  788000  868000
