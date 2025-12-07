@@ -172,6 +172,7 @@
 			qcom,thermal-derate-en;
 			qcom,thermal-derate-current = <200 500 1000>;
 			qcom,isc-delay = <192>;
+            qcom,torch-realtime-brightness-control = <1>;
 			qcom,pmic-revid = <&pm660l_revid>;
 
 			pm660l_flash0: qcom,flash_0 {
