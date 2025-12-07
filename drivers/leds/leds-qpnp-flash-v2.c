@@ -742,21 +742,16 @@ static int qpnp_flash_led_init_settings(struct qpnp_flash_led *led)
 			&val);
 	if (rc < 0)
 		return rc;
-
-	/*
-	 * Updating torch current on-the-fly is possible
-	 * from PM6150L onwards.
-	 */
-	if (val >= PM6150L_FLASH_SUBTYPE) {
-		rc = qpnp_flash_led_masked_read(led,
-			FLASH_LED_REG_CHICKEN_BITS(led->base),
-			FLASH_LED_EN_ITAR_FLY_BIT,
-			&val);
-		if (rc < 0)
-			return rc;
-
-		led->torch_current_update = !!val;
-	}
+	/* * Updating torch current on-the-fly is possible * from PM6150L onwards. Also enable it on PM660L if DT flag is set. */ 
+	if (val >= PM6150L_FLASH_SUBTYPE) { 
+		rc = qpnp_flash_led_masked_read(led, 
+			FLASH_LED_REG_CHICKEN_BITS(led->base), 
+			FLASH_LED_EN_ITAR_FLY_BIT, &val); 
+		if (rc < 0) 
+			return rc; 
+		led->torch_current_update = !!val; } 
+	else if (val == PM660L_FLASH_SUBTYPE) { /* Use DT flag directly on PM660L (no chicken bit check) */ 
+		led->torch_current_update = led->pdata->torch_realtime_brightness_control; }
 
 	if (led->pdata->led1n2_iclamp_low_ma) {
 		val = get_current_reg_code(led->pdata->led1n2_iclamp_low_ma,
