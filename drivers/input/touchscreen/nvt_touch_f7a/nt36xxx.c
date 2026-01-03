@@ -1860,7 +1860,7 @@ static int32_t __init nvt_driver_init(void)
 
 #ifdef DOES_NOT_SUPPORT_SHUTDOWN_CHARGING
 	if (strstr(saved_command_line, "androidboot.mode=charger") != NULL) {
-		LOGV("androidboot.mode=charger, TP doesn't support!\n");
+		NVT_LOG("androidboot.mode=charger, TP doesn't support!\n");
 		goto err;
 	}
 #endif
