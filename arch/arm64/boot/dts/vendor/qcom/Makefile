@@ -462,7 +462,7 @@ sdm660-internal-codec-cdp.dtb \
         sdm660-pm660a-headset-jacktype-no-rcm.dtb \
         sdm660-usbc-audio-mtp.dtb \
         sdm660-usbc-audio-rcm.dtb \
-	sdm660-qrd-dsi-rm67195-amoled.dtb \
+        sdm660-qrd-dsi-rm67195-amoled.dtb \
         sdm636-cdp.dtb \
         sdm636-mtp.dtb \
         sdm636-qrd.dtb \
