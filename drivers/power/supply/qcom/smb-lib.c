@@ -2404,7 +2404,7 @@ int smblib_get_prop_battery_full_design(struct smb_charger *chg,
 		return -EINVAL;
 	chip = power_supply_get_drvdata(chg->bms_psy);
 	if (chip->battery_full_design)
-#if defined(CONFIG_MACH_XIAOMI_CLOVER) || defined(CONFIG_MACH_XIAOMI_LAVENDER)
+#if defined(CONFIG_MACH_XIAOMI_LAVENDER)
 		val->intval = chip->battery_full_design * 1000;
 #else
 		val->intval = chip->battery_full_design;
