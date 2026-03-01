@@ -13,12 +13,30 @@
 
 #define MAX_NR_CLUSTERS			3
 
-#ifdef CONFIG_HZ_300
+#if defined(CONFIG_HZ_100)
+/* Default window size (in ns) = 20ms */
+#define DEFAULT_SCHED_RAVG_WINDOW 20000000
+
+#elif defined(CONFIG_HZ_200)
+/* Default window size (in ns) = 15ms */
+#define DEFAULT_SCHED_RAVG_WINDOW 15000000
+
+#elif defined(CONFIG_HZ_250)
+/* Default window size (in ns) = 16ms */
+#define DEFAULT_SCHED_RAVG_WINDOW 16000000
+
+#elif defined(CONFIG_HZ_300)
+/* Default window size (in ns) = 16ms */
 /*
  * Tick interval becomes to 3333333 due to
  * rounding error when HZ=300.
  */
-#define DEFAULT_SCHED_RAVG_WINDOW (3333333 * 6)
+#define DEFAULT_SCHED_RAVG_WINDOW (3333333 * 5)
+
+#elif defined(CONFIG_HZ_1000)
+/* Default window size (in ns) = 17ms */
+#define DEFAULT_SCHED_RAVG_WINDOW 17000000
+
 #else
 /* Default window size (in ns) = 20ms */
 #define DEFAULT_SCHED_RAVG_WINDOW 20000000
