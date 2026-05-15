@@ -2042,58 +2042,58 @@ int hfi_process_msg_packet(u32 device_id, struct vidc_hal_msg_pkt_hdr *msg_hdr,
 	dprintk(VIDC_DBG, "Parse response %#x\n", msg_hdr->packet);
 	switch (msg_hdr->packet) {
 	case HFI_MSG_EVENT_NOTIFY:
-		pkt_func = (pkt_func_def)hfi_process_event_notify;
+		pkt_func = hfi_process_event_notify;
 		break;
 	case  HFI_MSG_SYS_INIT_DONE:
-		pkt_func = (pkt_func_def)hfi_process_sys_init_done;
+		pkt_func = hfi_process_sys_init_done;
 		break;
 	case HFI_MSG_SYS_SESSION_INIT_DONE:
-		pkt_func = (pkt_func_def)hfi_process_session_init_done;
+		pkt_func = hfi_process_session_init_done;
 		break;
 	case HFI_MSG_SYS_PROPERTY_INFO:
-		pkt_func = (pkt_func_def)hfi_process_sys_property_info;
+		pkt_func = hfi_process_sys_property_info;
 		break;
 	case HFI_MSG_SYS_SESSION_END_DONE:
-		pkt_func = (pkt_func_def)hfi_process_session_end_done;
+		pkt_func = hfi_process_session_end_done;
 		break;
 	case HFI_MSG_SESSION_LOAD_RESOURCES_DONE:
-		pkt_func = (pkt_func_def)hfi_process_session_load_res_done;
+		pkt_func = hfi_process_session_load_res_done;
 		break;
 	case HFI_MSG_SESSION_START_DONE:
-		pkt_func = (pkt_func_def)hfi_process_session_start_done;
+		pkt_func = hfi_process_session_start_done;
 		break;
 	case HFI_MSG_SESSION_STOP_DONE:
-		pkt_func = (pkt_func_def)hfi_process_session_stop_done;
+		pkt_func = hfi_process_session_stop_done;
 		break;
 	case HFI_MSG_SESSION_EMPTY_BUFFER_DONE:
-		pkt_func = (pkt_func_def)hfi_process_session_etb_done;
+		pkt_func = hfi_process_session_etb_done;
 		break;
 	case HFI_MSG_SESSION_FILL_BUFFER_DONE:
-		pkt_func = (pkt_func_def)hfi_process_session_ftb_done;
+		pkt_func = hfi_process_session_ftb_done;
 		break;
 	case HFI_MSG_SESSION_FLUSH_DONE:
-		pkt_func = (pkt_func_def)hfi_process_session_flush_done;
+		pkt_func = hfi_process_session_flush_done;
 		break;
 	case HFI_MSG_SESSION_PROPERTY_INFO:
-		pkt_func = (pkt_func_def)hfi_process_session_prop_info;
+		pkt_func = hfi_process_session_prop_info;
 		break;
 	case HFI_MSG_SESSION_RELEASE_RESOURCES_DONE:
-		pkt_func = (pkt_func_def)hfi_process_session_rel_res_done;
+		pkt_func = hfi_process_session_rel_res_done;
 		break;
 	case HFI_MSG_SYS_RELEASE_RESOURCE:
-		pkt_func = (pkt_func_def)hfi_process_sys_rel_resource_done;
+		pkt_func = hfi_process_sys_rel_resource_done;
 		break;
 	case HFI_MSG_SESSION_GET_SEQUENCE_HEADER_DONE:
-		pkt_func = (pkt_func_def) hfi_process_session_get_seq_hdr_done;
+		pkt_func = hfi_process_session_get_seq_hdr_done;
 		break;
 	case HFI_MSG_SESSION_RELEASE_BUFFERS_DONE:
-		pkt_func = (pkt_func_def)hfi_process_session_rel_buf_done;
+		pkt_func = hfi_process_session_rel_buf_done;
 		break;
 	case HFI_MSG_SYS_SESSION_ABORT_DONE:
-		pkt_func = (pkt_func_def)hfi_process_session_abort_done;
+		pkt_func = hfi_process_session_abort_done;
 		break;
 	case HFI_MSG_SESSION_SYNC_DONE:
-		pkt_func = (pkt_func_def)hfi_process_ignore;
+		pkt_func = hfi_process_ignore;
 		break;
 	default:
 		dprintk(VIDC_DBG, "Unable to parse message: %#x\n",
