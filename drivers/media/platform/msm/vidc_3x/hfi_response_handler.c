@@ -1903,9 +1903,10 @@ static int hfi_process_session_abort_done(u32 device_id,
 
 static int hfi_process_session_get_seq_hdr_done(
 		u32 device_id,
-		struct hfi_msg_session_get_sequence_header_done_packet *pkt,
+		void *_pkt,
 		struct msm_vidc_cb_info *info)
 {
+	struct hfi_msg_session_get_sequence_header_done_packet *pkt = _pkt;
 	struct msm_vidc_cb_data_done data_done = {0};
 
 	if (!pkt || pkt->size !=
