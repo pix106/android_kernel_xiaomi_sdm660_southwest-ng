@@ -1260,9 +1260,6 @@ static int msm_routing_find_topology_on_index(int session_type, int app_type,
 	int topology = -EINVAL;
 	struct cal_block_data *cal_block = NULL;
 
-	if (cal_data[idx] == NULL)
-		return topology;
-
 	mutex_lock(&cal_data[idx]->lock);
 	cal_block = msm_routing_find_topology(session_type, app_type,
 					      acdb_dev_id, idx, exact);
@@ -1288,6 +1285,9 @@ static int msm_routing_get_adm_topology(int fedai_id, int session_type,
 	pr_debug("%s: fedai_id %d, session_type %d, be_id %d\n",
 	       __func__, fedai_id, session_type, be_id);
 
+	if (cal_data == NULL)
+		goto done;
+
 	app_type = fe_dai_app_type_cfg[fedai_id][session_type][be_id].app_type;
 	acdb_dev_id =
 		fe_dai_app_type_cfg[fedai_id][session_type][be_id].acdb_dev_id;
@@ -1308,6 +1308,7 @@ static int msm_routing_get_adm_topology(int fedai_id, int session_type,
 		if (topology < 0)
 			topology = NULL_COPP_TOPOLOGY;
 	}
+done:
 	pr_debug("%s: Using topology %d\n", __func__, topology);
 	return topology;
 }
@@ -5924,8 +5925,9 @@ static int msm_routing_ext_ec_get(struct snd_kcontrol *kcontrol,
 				  struct snd_ctl_elem_value *ucontrol)
 {
 #ifdef CONFIG_MACH_XIAOMI_JASON
-	struct snd_soc_dapm_widget *widget =
-		snd_soc_dapm_kcontrol_widget(kcontrol);
+	struct snd_soc_dapm_widget_list *wlist =
+						dapm_kcontrol_get_wlist(kcontrol);
+	struct snd_soc_dapm_widget *widget = wlist->widgets[0];
 #endif
 	pr_debug("%s: ext_ec_ref_rx  = %x\n", __func__, msm_route_ext_ec_ref);
 
@@ -6042,6 +6044,12 @@ static const struct soc_enum msm_route_ext_ec_ref_rx_enum[] = {
 static const struct snd_kcontrol_new voc_ext_ec_mux =
 	SOC_DAPM_ENUM_EXT("VOC_EXT_EC MUX Mux", msm_route_ext_ec_ref_rx_enum[0],
 			  msm_routing_ext_ec_get, msm_routing_ext_ec_put);
+
+#ifdef CONFIG_MACH_MI
+static const struct snd_kcontrol_new voip_ext_ec_mux =
+	SOC_DAPM_ENUM_EXT("VOIP_EXT_EC MUX Mux", msm_route_ext_ec_ref_rx_enum[0],
+			msm_routing_ext_ec_get, msm_routing_ext_ec_put);
+#endif
 
 static const struct snd_kcontrol_new pri_spdif_rx_mixer_controls[] = {
 	SOC_DOUBLE_EXT("MultiMedia1", SND_SOC_NOPM,
@@ -6494,11 +6502,6 @@ static const struct snd_kcontrol_new slimbus_rx_mixer_controls[] = {
 	msm_routing_put_audio_mixer),
 };
 
-#ifdef CONFIG_MACH_MI
-static const struct snd_kcontrol_new voip_ext_ec_mux =
-	SOC_DAPM_ENUM_EXT("VOIP_EXT_EC MUX Mux", msm_route_ext_ec_ref_rx_enum[0],
-			msm_routing_ext_ec_get, msm_routing_ext_ec_put);
-#endif
 #ifndef CONFIG_MI2S_DISABLE
 static const struct snd_kcontrol_new pri_i2s_rx_mixer_controls[] = {
 	SOC_DOUBLE_EXT("MultiMedia1", SND_SOC_NOPM,
