@@ -56,6 +56,12 @@ menu "Xiaomi board selection"
 		select MACH_LONGCHEER
 		help
 		  Support for Xiaomi MI 6X variant
+		  
+	config MACH_XIAOMI_WHYRED
+		bool "Xiaomi whyred board"
+		select MACH_LONGCHEER
+		help
+		  Support for Xiaomi Redmi Note 5 (Pro)
 
 	config MACH_XIAOMI_CLOVER
 		bool "Xiaomi clover board"
