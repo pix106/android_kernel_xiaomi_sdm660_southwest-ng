@@ -5,7 +5,6 @@
 
 #include <linux/linkage.h>
 #include <asm/assembler.h>
-#include <linux/version.h>
 
 /**
  * _lz4_decompress_asm: The fast LZ4 decompression, lz4 decompression algothrim asm
@@ -41,7 +40,7 @@
 #define save_dst		x15
 #define save_src		x16
 #define offset_src_ptr		x17
-#if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 4, 0)
+#ifdef CONFIG_SHADOW_CALL_STACK
 #define w_tmp_match_length	w6
 #define tmp_match_length	x6
 #else
@@ -245,11 +244,11 @@
 .text
 .p2align 4
 
-SYM_FUNC_START(_lz4_decompress_asm)
+ENTRY(_lz4_decompress_asm)
 	lz4_decompress_asm_generic
-SYM_FUNC_END(_lz4_decompress_asm)
+ENDPROC(_lz4_decompress_asm)
 
-SYM_INNER_LABEL(Failed, SYM_L_LOCAL)
+Failed:
 	mov	tmp, #-1
 	b	Exit_here
 
@@ -307,6 +306,6 @@ Copylength_table:
 
 .text
 .p2align 4
-SYM_FUNC_START(_lz4_decompress_asm_noprfm)
+ENTRY(_lz4_decompress_asm_noprfm)
 	lz4_decompress_asm_generic	0
-SYM_FUNC_END(_lz4_decompress_asm_noprfm)
+ENDPROC(_lz4_decompress_asm_noprfm)
