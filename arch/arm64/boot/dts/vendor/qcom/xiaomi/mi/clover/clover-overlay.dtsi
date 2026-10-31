@@ -797,6 +797,7 @@
 &int_codec {
 	status = "okay";
 	qcom,wsa-disable;
+	qcom,wsa-max-devs = <0>;
 	qcom,msm-mi2s-ext-mclk = <1>, <0>, <0>, <0>;
 	qcom,msm-mbhc-gnd-swh = <0>;
 	qcom,msm-micbias1-ext-cap;
@@ -828,6 +829,9 @@
                 "ADC3_IN", "ADC3_OUT";
 	/delete-property/ qcom,msm-micbias2-ext-cap;
 	/delete-property/ qcom,us-euro-gpios;
+};
+&msm_sdw_codec {
+	status = "disabled";
 };
 &clock_audio {
 	status = "disabled";
