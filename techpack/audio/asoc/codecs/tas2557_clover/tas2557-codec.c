@@ -88,6 +88,8 @@ static int tas2557_codec_suspend(struct snd_soc_component *pCodec)
 	mutex_lock(&pTAS2557->codec_lock);
 
 	dev_dbg(pTAS2557->dev, "%s\n", __func__);
+	/* Force software block shutdown to prevent downstream clock loss loops */
+	tas2557_enable(pTAS2557, false);
 	pTAS2557->runtime_suspend(pTAS2557);
 
 	mutex_unlock(&pTAS2557->codec_lock);
@@ -103,6 +105,8 @@ static int tas2557_codec_resume(struct snd_soc_component *pCodec)
 
 	dev_dbg(pTAS2557->dev, "%s\n", __func__);
 	pTAS2557->runtime_resume(pTAS2557);
+	/* Wake up the digital core after clocks are restored */
+	tas2557_enable(pTAS2557, true);
 
 	mutex_unlock(&pTAS2557->codec_lock);
 	return ret;
